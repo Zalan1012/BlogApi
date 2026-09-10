@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "GTanuFGkasM=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\kaksziZZ\\Downloads\\FARKASKZ13\\FirestRestFul\\BlogAPIKZ\\BlogAPIKZ.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\kaksziZZ\\.nuget\\packages\\microsoft.aspnetcore.openapi\\10.0.12\\microsoft.aspnetcore.openapi.10.0.12.nupkg.sha512",
+    "C:\\Users\\kaksziZZ\\.nuget\\packages\\microsoft.openapi\\2.12.0\\microsoft.openapi.2.12.0.nupkg.sha512",
+    "C:\\Users\\kaksziZZ\\.nuget\\packages\\scalar.aspnetcore\\2.17.3\\scalar.aspnetcore.2.17.3.nupkg.sha512"
+  ],
+  "logs": []
+}
