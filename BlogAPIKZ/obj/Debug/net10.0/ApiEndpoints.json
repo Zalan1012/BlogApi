@@ -40,5 +40,21 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlogAPIKZ.Controllers.BloggerController",
+    "Method": "LoginBlogger",
+    "RelativePath": "bloggers/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "loginNewBloggerDTO",
+        "Type": "BlogAPIKZ.Models.DTOs.LoginNewBloggerDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   }
 ]

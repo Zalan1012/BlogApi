@@ -66,7 +66,7 @@ namespace BlogAPIKZ.Controllers
 
             var blogger = new Blogger
             {
-                Id = datareader.GetInt32(0), 
+                Id = datareader.GetInt32(0),
                 Name = datareader.GetString(1),
                 Email = datareader.GetString(2),
                 Age = datareader.GetInt32(3),
@@ -84,12 +84,12 @@ namespace BlogAPIKZ.Controllers
         {
 
             var connector = new MySqlConnection(ConnectionString);
-                
+
             connector.Open();
 
             string sql = @"INSERT INTO `blogger`(`Name`, `Email`, `Age`, `Password`, `RegistrationTime`) VALUES (@name, @email, @age, @password, @registrationTime)";
 
-            var cmd = new MySqlCommand(sql, connector); 
+            var cmd = new MySqlCommand(sql, connector);
 
             cmd.Parameters.AddWithValue("@name", addNewBloggerDTO.Name);
             cmd.Parameters.AddWithValue("@email", addNewBloggerDTO.Email);
@@ -101,7 +101,33 @@ namespace BlogAPIKZ.Controllers
 
             connector.Close();
 
-            return new { message = "Sikeres hozzáadás.", result= addNewBloggerDTO };
+            return new { message = "Sikeres hozzáadás.", result = addNewBloggerDTO };
         }
-    }   
+
+        [HttpPost("login")]
+        public object LoginBlogger(LoginNewBloggerDTO loginNewBloggerDTO)
+        {
+            var connector = new MySqlConnection(ConnectionString);
+
+            connector.Open();
+
+            string sql = @"SELECT `id` FROM `blogger`
+               WHERE `email` = @email AND `password` = @password;";
+
+            var cmd = new MySqlCommand(sql, connector);
+            cmd.Parameters.AddWithValue("@email", loginNewBloggerDTO.Email);
+            cmd.Parameters.AddWithValue("@password", loginNewBloggerDTO.Password);
+
+            var datareader = cmd.ExecuteReader();
+
+            if (datareader.Read() == true)
+            {
+                return new { message = "Sikeres hozzáadás.", result = datareader.GetInt32("id") };
+            }
+            else
+            {
+                return new { message = "Sikertelen hozzáadás.", result = loginNewBloggerDTO};
+            }
+        }
+    }
 }
