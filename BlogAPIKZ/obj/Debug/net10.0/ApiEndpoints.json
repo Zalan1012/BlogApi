@@ -1,6 +1,22 @@
 [
   {
     "ContainingType": "BlogAPIKZ.Controllers.BloggerController",
+    "Method": "AddNewBlogger",
+    "RelativePath": "bloggers",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "addNewBloggerDTO",
+        "Type": "BlogAPIKZ.Models.DTOs.AddNewBloggerDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlogAPIKZ.Controllers.BloggerController",
     "Method": "GetAllBlogger",
     "RelativePath": "bloggers/all",
     "HttpMethod": "GET",

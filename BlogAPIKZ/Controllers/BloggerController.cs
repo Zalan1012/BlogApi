@@ -1,4 +1,5 @@
 ﻿using BlogAPIKZ.Models;
+using BlogAPIKZ.Models.DTOs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MySqlConnector;
@@ -65,7 +66,7 @@ namespace BlogAPIKZ.Controllers
 
             var blogger = new Blogger
             {
-                Id = datareader.GetInt32(0),
+                Id = datareader.GetInt32(0), 
                 Name = datareader.GetString(1),
                 Email = datareader.GetString(2),
                 Age = datareader.GetInt32(3),
@@ -76,5 +77,31 @@ namespace BlogAPIKZ.Controllers
             connector.Close();
             return new { message = "Sikeres találat.", result = blogger };
         }
-    }
+
+        [HttpPost]
+
+        public object AddNewBlogger(AddNewBloggerDTO addNewBloggerDTO)
+        {
+
+            var connector = new MySqlConnection(ConnectionString);
+                
+            connector.Open();
+
+            string sql = @"INSERT INTO `blogger`(`Name`, `Email`, `Age`, `Password`, `RegistrationTime`) VALUES (@name, @email, @age, @password, @registrationTime)";
+
+            var cmd = new MySqlCommand(sql, connector); 
+
+            cmd.Parameters.AddWithValue("@name", addNewBloggerDTO.Name);
+            cmd.Parameters.AddWithValue("@email", addNewBloggerDTO.Email);
+            cmd.Parameters.AddWithValue("@age", addNewBloggerDTO.Age);
+            cmd.Parameters.AddWithValue("@password", addNewBloggerDTO.Password);
+            cmd.Parameters.AddWithValue("@registrationTime", DateTime.Now);
+
+            cmd.ExecuteNonQuery();
+
+            connector.Close();
+
+            return new { message = "Sikeres hozzáadás.", result= addNewBloggerDTO };
+        }
+    }   
 }

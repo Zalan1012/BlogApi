@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BlogAPIKZ")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e9f71fd12c74109667a13fbe710e201cd646a8aa")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+79762b0bdaf0d0e71fd5da513c36cec8082352e8")]
 [assembly: System.Reflection.AssemblyProductAttribute("BlogAPIKZ")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BlogAPIKZ")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
