@@ -51,7 +51,7 @@
         }
       }
     },
-    "/bloggers": {
+    "/bloggers/register": {
       "post": {
         "tags": [
           "Blogger"
@@ -114,6 +114,85 @@
           }
         }
       }
+    },
+    "/bloggers/deleteById": {
+      "delete": {
+        "tags": [
+          "Blogger"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "pattern": "^-?(?:0|[1-9]\\d*)$",
+                "type": [
+                  "integer",
+                  "string"
+                ],
+                "format": "int32"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "pattern": "^-?(?:0|[1-9]\\d*)$",
+                "type": [
+                  "integer",
+                  "string"
+                ],
+                "format": "int32"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "pattern": "^-?(?:0|[1-9]\\d*)$",
+                "type": [
+                  "integer",
+                  "string"
+                ],
+                "format": "int32"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/bloggers/updateById": {
+      "put": {
+        "tags": [
+          "Blogger"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Blogger"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Blogger"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Blogger"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -146,6 +225,49 @@
               "null",
               "string"
             ]
+          }
+        }
+      },
+      "Blogger": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "name": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "email": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "age": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "password": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "registrationTime": {
+            "type": "string",
+            "format": "date-time"
           }
         }
       },

@@ -1,22 +1,6 @@
 [
   {
     "ContainingType": "BlogAPIKZ.Controllers.BloggerController",
-    "Method": "AddNewBlogger",
-    "RelativePath": "bloggers",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "addNewBloggerDTO",
-        "Type": "BlogAPIKZ.Models.DTOs.AddNewBloggerDTO",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "BlogAPIKZ.Controllers.BloggerController",
     "Method": "GetAllBlogger",
     "RelativePath": "bloggers/all",
     "HttpMethod": "GET",
@@ -43,6 +27,22 @@
   },
   {
     "ContainingType": "BlogAPIKZ.Controllers.BloggerController",
+    "Method": "DeleteBlogger",
+    "RelativePath": "bloggers/deleteById",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlogAPIKZ.Controllers.BloggerController",
     "Method": "LoginBlogger",
     "RelativePath": "bloggers/login",
     "HttpMethod": "POST",
@@ -52,6 +52,38 @@
       {
         "Name": "loginNewBloggerDTO",
         "Type": "BlogAPIKZ.Models.DTOs.LoginNewBloggerDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlogAPIKZ.Controllers.BloggerController",
+    "Method": "AddNewBlogger",
+    "RelativePath": "bloggers/register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "addNewBloggerDTO",
+        "Type": "BlogAPIKZ.Models.DTOs.AddNewBloggerDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlogAPIKZ.Controllers.BloggerController",
+    "Method": "UpdateBlogger",
+    "RelativePath": "bloggers/updateById",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "blogger",
+        "Type": "BlogAPIKZ.Models.Blogger",
         "IsRequired": true
       }
     ],

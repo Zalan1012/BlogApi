@@ -78,7 +78,7 @@ namespace BlogAPIKZ.Controllers
             return new { message = "Sikeres találat.", result = blogger };
         }
 
-        [HttpPost]
+        [HttpPost("register")]
 
         public object AddNewBlogger(AddNewBloggerDTO addNewBloggerDTO)
         {
@@ -126,8 +126,53 @@ namespace BlogAPIKZ.Controllers
             }
             else
             {
-                return new { message = "Sikertelen hozzáadás.", result = loginNewBloggerDTO};
+                return new { message = "Sikertelen hozzáadás.", result = loginNewBloggerDTO };
             }
+        }
+
+        [HttpDelete("deleteById")]
+        public object DeleteBlogger([FromBody] int id)
+        {
+            var connector = new MySqlConnection(ConnectionString);
+
+            connector.Open();
+
+            string sql = @"DELETE FROM `blogger` WHERE `id` = @id";
+
+            var cmd = new MySqlCommand(sql, connector);
+            cmd.Parameters.AddWithValue("@id", id);
+
+            object result = cmd.ExecuteNonQuery() > 0 ? new { message = "Sikeres törlés." } : new { message = "Nincs ilyen felhasználó." };
+
+            connector.Close();
+
+            return result;
+
+        }
+
+        [HttpPut("update")]
+        public object UpateBlogger([FromQuery] int id, [FromBody] UpdateBloggerDTO updateBloggerDto)
+        {
+            var connector = new MySqlConnection(ConnectionString);
+
+            connector.Open();
+
+            string sql = @"UPDATE `blogger` SET `name`=@name,`email`=@email,`age`=@age,`password`=@password 
+               WHERE `id`= @id;";
+
+            var cmd = new MySqlCommand(sql, connector);
+
+            cmd.Parameters.AddWithValue("@name", updateBloggerDto.Name);
+            cmd.Parameters.AddWithValue("@email", updateBloggerDto.Email);
+            cmd.Parameters.AddWithValue("@age", updateBloggerDto.Age);
+            cmd.Parameters.AddWithValue("@password", updateBloggerDto.Password);
+            cmd.Parameters.AddWithValue("@id", id);
+
+            object result = cmd.ExecuteNonQuery() > 0 ? new { message = "Sikeres frissites." } : new { message = "Nincs ilyen felhasználó." };
+
+            connector.Close();
+
+            return result;
         }
     }
 }
